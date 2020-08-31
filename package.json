@@ -1,0 +1,15 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "repository": "git@github.com:fujiazhang/vue.git",
+  "author": "fujia_zhang <i@iamzfj.cn>",
+  "license": "MIT",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
