@@ -4473,6 +4473,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+snabbdom@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.npm.taobao.org/snabbdom/download/snabbdom-0.7.4.tgz#817f07e8d3fb870960c3763b8da56f1ba982d31a"
+  integrity sha1-gX8H6NP7hwlgw3Y7jaVvG6mC0xo=
+
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.npm.taobao.org/snapdragon-node/download/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
