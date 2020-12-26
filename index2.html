@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>差值表达式:</h1>
+    <h2 id="msg">hello</h2>
+  </div>
+  <script>
+    // 模拟vue中的data
+    let data = {
+      msg: 'hello'
+    }
+
+    // 模拟vue实例
+    let vm = {}
+
+    // 数据劫持 访问或设置成员的时候 做一些干预操作
+    Object.defineProperty(vm, 'msg', {
+      enumerable: true,//可枚举（遍历）
+      configurable: true,//可配置，可通过defineProperty重新定义
+      get() {
+        console.log('get:', data.msg)
+      },
+      set(newValue) {
+        console.log('set:', newValue)
+        if (newValue !== data.msg) {
+          data.msg = newValue
+          //测试更新dom数据
+          document.querySelector('#msg').textContent = data.msg
+        }
+      }
+    })
+    //测试
+    setTimeout(() => { vm.msg = 'hello new world' }, 1500)
+
+  </script>
+</body>
+
+</html>

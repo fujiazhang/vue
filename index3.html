@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>差值表达式:</h1>
+    <h2 id="msg">hello</h2>
+  </div>
+  <script>
+    // 模拟vue中的data
+    let data = {
+      msg: 'hello',
+      num: 0
+    }
+
+    // 模拟vue实例
+    let vm = new Proxy(data, {
+      // 执行代理行为的函数
+      // 当访问vm的成员会执行
+      get(target, key) { //target就是我闷代理的对象 这里的data
+        console.log('get ,key:', key, target[key])
+      },
+      set(target, key, newValue) {
+        console.log('set,key:', key, newValue)
+        if (target[key] !== newValue) {
+          target[key] = newValue
+          //测试更新dom数据
+          document.querySelector('#msg').textContent = data.msg
+        }
+      }
+    })
+
+
+    //测试
+    setTimeout(() => { vm.msg = 'hello new world' }, 1500)
+
+  </script>
+</body>
+
+</html>

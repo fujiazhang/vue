@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>差值表达式:</h1>
+    <h2>{{msg}}</h2>
+    <h1>v-text:</h1>
+    <h2 v-text="msg"></h2>
+    <h1>v-model双向绑定:</h1>
+    <input type="text" v-model="msg">
+  </div>
+  <script>
+    //事件触发器
+    class EventEmitter {
+      constructor() {
+        // this.subs = {} 
+        // 使用 Object.create()也可以创建空对象，接受一个原型对象，这里不需要原型，传null可提升性能
+        this.subs = Object.create(null)
+      }
+
+      $on(eventType, handler) {
+        this.subs[eventType] = this.subs[eventType] || []
+        this.subs[eventType].push(handler)
+      }
+
+      $emit(eventType) {
+        if (this.subs[eventType]) {
+          this.subs[eventType].forEach(f => {
+            f()
+          });
+        }
+      }
+    }
+    // 测试
+    let em = new EventEmitter()
+    em.$on('click', () => {
+      console.log('click1')
+    })
+    em.$on('click', () => {
+      console.log('click2')
+    })
+    em.$emit('click')
+  </script>
+</body>
+
+</html>
